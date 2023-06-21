@@ -1,0 +1,122 @@
+﻿<Page x:Class="SynergyProga.PageFolder.ManagerPageFolder.AddEquipment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SynergyProga.PageFolder.ManagerPageFolder"
+      d:DesignHeight="630" d:DesignWidth="940"
+      Title="Добавить сотрудника">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="180"/>
+
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Наименование"
+               Style="{DynamicResource NormalLabel}"
+               Grid.Column="3" Grid.Row="1"/>
+
+        <TextBox x:Name="NameTb" Style="{DynamicResource TBStyle}"
+                 Grid.Row="1"
+                 Grid.Column="4" Margin="0,11"
+                     />
+
+        <Label Content="Номер"
+               Style="{DynamicResource NormalLabel}"
+               Grid.Column="3" Grid.Row="3"/>
+
+        <TextBox x:Name="NumberTb" Style="{DynamicResource TBStyle}"
+                 Grid.Row="3"
+                 Grid.Column="4" Margin="0,11"/>
+
+        <Label Content="Стоимость"
+               Style="{DynamicResource NormalLabel}"
+               Grid.Column="3" Grid.Row="5"/>
+
+        <TextBox x:Name="CostTb" Style="{DynamicResource TBStyle}"
+                 Grid.Row="5"
+                 Grid.Column="4" Margin="0,11" Tag="Optional"/>
+
+        <Label Content="Ответственный"
+               Style="{DynamicResource NormalLabel}"
+               Grid.Column="3" Grid.Row="9"/>
+
+        <ComboBox x:Name="WorkerCb"
+          Grid.Row="9" 
+          Foreground="Black"
+          Background="Transparent"
+          Grid.Column="4"
+          SelectedValuePath="IdWorkerInfo"
+          BorderBrush="DarkGray">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Тип"
+               Style="{DynamicResource NormalLabel}"
+               Grid.Column="3" Grid.Row="7"/>
+
+        <ComboBox x:Name="EqTypeCb"
+                 Grid.Row="7" Foreground="Black"
+                  Background="Transparent"
+                 Grid.Column="4"
+                  SelectedValuePath="IdEqType"
+                 DisplayMemberPath="EqTypeName"
+                  BorderBrush="DarkGray">
+        </ComboBox>
+
+
+
+        <Button x:Name="AddUserBtn" Grid.Row="11"
+            Content="Добавить" Click="AddUserBtn_Click"
+            Height="50"  Style="{DynamicResource ButtonsStyle}" Margin="0,10,0,10" Grid.ColumnSpan="8">
+            <Button.Template>
+
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

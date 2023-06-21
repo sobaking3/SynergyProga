@@ -22,7 +22,8 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
     /// <summary>
     /// Логика взаимодействия для ListEquipment.xaml
     /// </summary>
-    
+
+
     public partial class ListEquipment : Page
     {
         public ListEquipment()

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SynergyProga.PageFolder.ManagerPageFolder"
       Height="630" Width="940"
-      Title="Добавить сотрудника">
+      Title="Добавить оборудование">
 
     <Grid>
         <Grid.ColumnDefinitions>

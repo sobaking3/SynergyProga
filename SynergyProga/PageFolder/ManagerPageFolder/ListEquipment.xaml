@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:SynergyProga.PageFolder.ManagerPageFolder" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="630" d:DesignWidth="940"
-      Title="Список билетов">
-    
+      Title="Список оборудования">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -66,7 +65,7 @@
                                     Binding="{Binding EquipmentType.EqTypeName}"
                                     Width="180"/>
                     <DataGridTextColumn Header="Ответственный" 
-                                    Binding="{Binding Worker.FirstName}"
+                                    Binding="{Binding Worker.LastName}"
                                     Width="190"/>
                 </DataGrid.Columns>
             </DataGrid>

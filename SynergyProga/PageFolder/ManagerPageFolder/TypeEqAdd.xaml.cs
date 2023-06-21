@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SynergyProga.ClassFolder;
+using SynergyProga.DataFolder;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +26,37 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         public TypeEqAdd()
         {
             InitializeComponent();
+        }
+
+        private void AddUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                try
+                {
+                    EqTypeAdd();
+
+                    MBClass.InfoMB("Тип товара добавлен");
+                    ElementsToolsClass.ClearAllControls(this);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
+            }
+            else
+            {
+                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+            }
+        }
+        private void EqTypeAdd()
+        {
+            var EqTypeAdd = new EquipmentType()
+            {
+                EqTypeName = EqTypeTb.Text,
+            };
+            DBEntities.GetContext().EquipmentType.Add(EqTypeAdd);
+            DBEntities.GetContext().SaveChanges();
         }
     }
 }

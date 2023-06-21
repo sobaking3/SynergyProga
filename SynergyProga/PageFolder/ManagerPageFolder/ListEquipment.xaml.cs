@@ -57,7 +57,7 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
                 }
             }
             catch (Exception ex)
-            {
+            {фи
                 MBClass.ErrorMB(ex);
             }
         }

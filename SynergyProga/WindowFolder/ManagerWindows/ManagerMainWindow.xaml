@@ -18,7 +18,7 @@
     </Window.Resources>
 
     <Border CornerRadius="30"
-               MouseDown="Border_MouseLeftButtonDown">
+               MouseDown="Border_MouseDown">
 
 
         <Border CornerRadius="30"
@@ -157,7 +157,7 @@
                             </StackPanel>
                             
                             <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" 
-                                    Height="39" Margin="15,0,15,10" Click="Button_Click_2"
+                                    Height="39" Margin="15,0,15,10" x:Name="Exit" Click="Exit_Click"
                                     HorizontalAlignment="Stretch">
                                 <StackPanel Orientation="Horizontal" >
                                     <Icon:PackIconMaterial 

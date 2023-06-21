@@ -1,4 +1,5 @@
-﻿using SynergyProga.PageFolder.ManagerPageFolder;
+﻿using SynergyProga.ClassFolder;
+using SynergyProga.PageFolder.ManagerPageFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,29 @@ namespace SynergyProga.WindowFolder.ManagerWindows
         private void EqTypeList_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new TypeListEq());
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            MBClass.MBLogOut(this);
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MBClass.MBExit();
+        }
+
+        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

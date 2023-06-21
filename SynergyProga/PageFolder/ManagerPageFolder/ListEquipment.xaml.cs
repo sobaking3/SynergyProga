@@ -3,6 +3,7 @@ using SynergyProga.DataFolder;
 using SynergyProga.PageFolder.AdminPageFolder;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
     /// <summary>
     /// Логика взаимодействия для ListEquipment.xaml
     /// </summary>
+    
     public partial class ListEquipment : Page
     {
         public ListEquipment()
@@ -32,9 +34,9 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         {
             try
             {
-                Equipment Equipment = ListEqLB.SelectedItem as Equipment;
+                Equipment Equipment = ListEqDG.SelectedItem as Equipment;
 
-                if (ListEqLB.SelectedItem == null)
+                if (ListEqDG.SelectedItem == null)
                 {
                     MBClass.ErrorMB("Пользователь не выбран");
                 }
@@ -43,10 +45,10 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
                     if (MBClass.QuestionMB($"Удалить оборудование " +
                     $"под номером {Equipment.EqNumber}?"))
                     {
-                        DBEntities.GetContext().Equipment.Remove(ListEqLB.SelectedItem as Equipment);
+                        DBEntities.GetContext().Equipment.Remove(ListEqDG.SelectedItem as Equipment);
                         DBEntities.GetContext().SaveChanges();
                         MBClass.InfoMB("Оборудование удалено");
-                        ListEqLB.ItemsSource = DBEntities.GetContext()
+                        ListEqDG.ItemsSource = DBEntities.GetContext()
                     .Equipment.ToList();
                     }
                 }
@@ -60,7 +62,7 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         {
             try
             {
-                ListEqLB.ItemsSource = DBEntities.GetContext()
+                ListEqDG.ItemsSource = DBEntities.GetContext()
                     .Equipment.Where(s => s.EqName
                     .StartsWith(SearchTb.Text) || s.EqNumber
                     .StartsWith(SearchTb.Text))

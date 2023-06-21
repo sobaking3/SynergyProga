@@ -91,21 +91,21 @@
                             <TextBlock Grid.Column="2" Grid.Row="1">
                             <Run Text="Фамилия: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding LastNameStaff}"/>
+                            <Run Text="{Binding LastName}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="3"
                                    Grid.Column="2">
                             <Run Text="Имя: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding FirstNameStaff}"/>
+                            <Run Text="{Binding FirstName}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="5"
                                    Grid.Column="2">
                             <Run Text="Отчество: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding MiddleNameStaff}"/>
+                            <Run Text="{Binding MiddleName}"/>
                             </TextBlock>
 
                             <TextBlock Grid.Row="8"
@@ -113,7 +113,7 @@
                                    >
                             <Run Text="Номер телефона: "
                                  FontWeight="Bold"/>
-                            <Run Text="{Binding PhoneNumberStaff}"/>
+                            <Run Text="{Binding Number}"/>
                             </TextBlock>
 
 

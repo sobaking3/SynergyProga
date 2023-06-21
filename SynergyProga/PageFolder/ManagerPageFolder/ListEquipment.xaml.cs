@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SynergyProga.ClassFolder;
+using SynergyProga.DataFolder;
+using SynergyProga.PageFolder.AdminPageFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,50 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         public ListEquipment()
         {
             InitializeComponent();
+        }
+
+        private void DeleteM1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Equipment Equipment = ListEqLB.SelectedItem as Equipment;
+
+                if (ListEqLB.SelectedItem == null)
+                {
+                    MBClass.ErrorMB("Пользователь не выбран");
+                }
+                else
+                {
+                    if (MBClass.QuestionMB($"Удалить оборудование " +
+                    $"под номером {Equipment.EqNumber}?"))
+                    {
+                        DBEntities.GetContext().Equipment.Remove(ListEqLB.SelectedItem as Equipment);
+                        DBEntities.GetContext().SaveChanges();
+                        MBClass.InfoMB("Оборудование удалено");
+                        ListEqLB.ItemsSource = DBEntities.GetContext()
+                    .Equipment.ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+        }
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ListEqLB.ItemsSource = DBEntities.GetContext()
+                    .Equipment.Where(s => s.EqName
+                    .StartsWith(SearchTb.Text) || s.EqNumber
+                    .StartsWith(SearchTb.Text))
+                    .ToList().OrderBy(s => s.EqName);
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using SynergyProga.DataFolder;
+﻿using SynergyProga.ClassFolder;
+using SynergyProga.DataFolder;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,41 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
                 .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Администратор"
             || r.NameRole == "Директор" 
             || r.NameRole == "Менеджер")).ToList();
+        }
+
+        private void AddUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ElementsToolsClass.AllFieldsFilled(this))
+            {
+                try
+                {
+                    AddEquip();
+
+                    MBClass.InfoMB("Сотрудник добавлен");
+                    ElementsToolsClass.ClearAllControls(this);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
+            }
+            else
+            {
+                MBClass.ErrorMB("Вы не ввели все нужные данные!");
+            }
+        }
+        private void AddEquip()
+        {
+            var AddEquip = new Equipment()
+            {
+                EqName = NameTb.Text,
+                EqNumber = NumberTb.Text,
+                EqCost= CostTb.Text,
+                IdEqType = Int32.Parse(EqTypeCb.SelectedValue.ToString()),
+                IdWorkerInfo = Int32.Parse(WorkerCb.SelectedValue.ToString()),
+            };
+            DBEntities.GetContext().Equipment.Add(AddEquip);
+            DBEntities.GetContext().SaveChanges();
         }
     }
 }

@@ -29,6 +29,8 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         public ListEquipment()
         {
             InitializeComponent();
+            ListEqDG.ItemsSource = DBEntities.GetContext()
+                .Equipment.ToList().OrderBy(u => u.IdEquipment);
         }
 
         private void DeleteM1_Click(object sender, RoutedEventArgs e)

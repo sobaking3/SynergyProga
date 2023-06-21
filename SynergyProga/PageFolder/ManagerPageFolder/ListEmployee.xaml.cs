@@ -28,6 +28,7 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
             ListEmployeeLB.ItemsSource = DBEntities.GetContext()
             .Worker.Where(u => u.User.Roles.NameRole != "Директор" && u.User.Roles.NameRole != "Администратор" && u.User.Roles.NameRole != "Менеджер")
             .ToList().OrderBy(u => u.LastName);
+
         }
 
         private void DeleteM1_Click(object sender, RoutedEventArgs e)

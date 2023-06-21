@@ -31,6 +31,8 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
                 .Roles.Except(DBEntities.GetContext().Roles.Where(r => r.NameRole == "Администратор"
             || r.NameRole == "Директор" 
             || r.NameRole == "Менеджер")).ToList();
+            EqTypeCb.ItemsSource = DBEntities.GetContext().EquipmentType.ToList();
+            WorkerCb.ItemsSource = DBEntities.GetContext().Worker.ToList();
         }
 
         private void AddUserBtn_Click(object sender, RoutedEventArgs e)

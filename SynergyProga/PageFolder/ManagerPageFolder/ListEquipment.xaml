@@ -43,6 +43,12 @@
           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                   IsReadOnly="True" AlternatingRowBackground="#E6F6FF" Opacity="0.5"
                   ItemsSource="{Binding Equipment}" Grid.Column="1" Margin="0,92,10,10" Grid.RowSpan="2" FontSize="16" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Удалить оборудование"
+                                 x:Name="DeleteM1" Click="DeleteM1_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.RowHeight>30</DataGrid.RowHeight>
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">

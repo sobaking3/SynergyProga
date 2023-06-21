@@ -26,6 +26,8 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
         public TypeListEq()
         {
             InitializeComponent();
+            ListEqTypeDG.ItemsSource = DBEntities.GetContext()
+                .EquipmentType.ToList().OrderBy(u => u.IdEqType);
         }
 
         private void DeleteM1_Click(object sender, RoutedEventArgs e)
@@ -40,14 +42,14 @@ namespace SynergyProga.PageFolder.ManagerPageFolder
                 }
                 else
                 {
-                    if (MBClass.QuestionMB($"Удалить оборудование " +
-                    $"под номером {EquipmentType.EqTypeName}?"))
+                    if (MBClass.QuestionMB($"Удалить тип оборудование " +
+                    $"с названием {EquipmentType.EqTypeName}?"))
                     {
-                        DBEntities.GetContext().Equipment.Remove(ListEqTypeDG.SelectedItem as Equipment);
+                        DBEntities.GetContext().EquipmentType.Remove(ListEqTypeDG.SelectedItem as EquipmentType);
                         DBEntities.GetContext().SaveChanges();
                         MBClass.InfoMB("Оборудование удалено");
                         ListEqTypeDG.ItemsSource = DBEntities.GetContext()
-                    .Equipment.ToList();
+                    .EquipmentType.ToList();
                     }
                 }
             }
